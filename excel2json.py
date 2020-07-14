@@ -1,4 +1,5 @@
 import xlrd
+import sys
 from table_utils import *
 
 def json_output(json_path, json_output_lst):
@@ -33,8 +34,13 @@ def excel2json(excel_path, json_path):
 
 
 def main():
-    excel_path = "Test.xlsx"
-    excel2json(excel_path, "out.json")
+    usage = '''usage : python excel2json.py input_excel_path output_json_path'''
+    if len(sys.argv) < 3:
+        print (usage)
+        return
+    input_excel_path = sys.argv[1]
+    output_json_path = sys.argv[2]
+    excel2json(input_excel_path, output_json_path)
 
 
 if __name__ == '__main__':
